@@ -1,0 +1,12 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    defer-datasource-initialization: true # Hibernate가 초기화되기 전에 data.sql이 먼저 실행되어서 발생하는 오류를 방지하기 위해 설정
+    show-sql: true # 실행시켰던 쿼리문 보기
+    properties:
+      hibernate:
+        format_sql: true # 정렬된 쿼리문 보기
+server:
+  port: 8070
