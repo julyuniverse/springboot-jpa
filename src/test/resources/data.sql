@@ -17,3 +17,7 @@ values (4, 'Baek Haeok', 'bho@kakao.com', now(), now());
 call next value for hibernate_sequence;
 insert into user (`id`, `name`, `email`, `created_at`, `updated_at`)
 values (5, 'Lee Sungbo', 'lsb@naver.com', now(), now());
+
+call next value for hibernate_sequence;
+insert into user (`id`, `name`, `email`, `created_at`, `updated_at`)
+values (6, 'Lee Taesung', 'lts@naver.com', now(), now());

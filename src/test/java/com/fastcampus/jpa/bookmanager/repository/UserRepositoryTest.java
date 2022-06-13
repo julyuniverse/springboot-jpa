@@ -135,14 +135,27 @@ class UserRepositoryTest {
 //
 //        userRepository.findAll(example).forEach(System.out::println);
 
-        // Example (Query by example)
-        User user = new User();
-        user.setName("Lee");
+//        // Example (Query by example)
+//        User user = new User();
+//        user.setName("Lee");
+//
+//        ExampleMatcher matcher = ExampleMatcher.matching()
+//                .withMatcher("name", contains()); // 양방향 like 검색
+//        Example<User> example = Example.of(user, matcher);
+//
+//        userRepository.findAll(example).forEach(System.out::println);
 
-        ExampleMatcher matcher = ExampleMatcher.matching()
-                .withMatcher("name", contains()); // 양방향 like 검색
-        Example<User> example = Example.of(user, matcher);
+//        // update
+//        userRepository.save(new User("david", "david@gamil.com"));
+//
+//        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+//        user.setEmail("martin@gmail.com");
+//
+//        userRepository.save(user);
+    }
 
-        userRepository.findAll(example).forEach(System.out::println);
+    @Test
+    void select() {
+        System.out.println(userRepository.findByEmail("lts@gmail.com"));
     }
 }
