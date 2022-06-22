@@ -38,6 +38,7 @@ public class User {
 //    @OneToMany(fetch = FetchType.EAGER)
 //    private List<Address> address;
 
+    // Entity event listener 7가지
     @PrePersist
     public void prePersist() {
         System.out.println(">>> prePersist");
@@ -47,5 +48,29 @@ public class User {
     public void postPersist() {
         System.out.println(">>> postPersist");
     }
-    
+
+    @PreUpdate
+    public void preUpdate() {
+        System.out.println(">>> preUpdate");
+    }
+
+    @PostUpdate
+    public void postUpdate() {
+        System.out.println(">>> postUpdate");
+    }
+
+    @PreRemove
+    public void preRemove() {
+        System.out.println(">>> preRemove");
+    }
+
+    @PostRemove
+    public void postRemove() {
+        System.out.println(">>> postRemove");
+    }
+
+    @PostLoad
+    public void postLoad() {
+        System.out.println(">>> postLoad");
+    }
 }

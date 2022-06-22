@@ -225,4 +225,17 @@ class UserRepositoryTest {
 
         System.out.println(userRepository.findRawRecord().get("gender"));
     }
+
+    @Test
+    void prePersistTest() {
+        User user = new User();
+        user.setEmail("lts2@gmail.com");
+        user.setName("Lee Taesung");
+        user.setCreatedAt(LocalDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
+
+        userRepository.save(user);
+
+        System.out.println(userRepository.findByEmail("lts2@gmail.com"));
+    }
 }
