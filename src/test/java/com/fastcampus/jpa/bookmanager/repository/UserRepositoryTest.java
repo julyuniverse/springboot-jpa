@@ -22,6 +22,9 @@ class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserHistoryRepository userHistoryRepository;
+
     @Test
     void crud() {
 
@@ -231,11 +234,38 @@ class UserRepositoryTest {
         User user = new User();
         user.setEmail("lts2@gmail.com");
         user.setName("Lee Taesung");
-        user.setCreatedAt(LocalDateTime.now());
-        user.setUpdatedAt(LocalDateTime.now());
+//        user.setCreatedAt(LocalDateTime.now());
+//        user.setUpdatedAt(LocalDateTime.now());
 
         userRepository.save(user);
 
         System.out.println(userRepository.findByEmail("lts2@gmail.com"));
+    }
+
+    @Test
+    void preUpdateTest() {
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+
+        System.out.println("as-is: " + user);
+
+        user.setName("Lee2");
+        userRepository.save(user);
+
+        System.out.println("to-be: " + userRepository.findAll().get(0));
+    }
+
+    @Test
+    void userHistoryTest() {
+        User user = new User();
+        user.setEmail("lts3@gmail.com");
+        user.setName("Lee3");
+
+        userRepository.save(user);
+
+        user.setName("Lee4");
+
+        userRepository.save(user);
+
+        userHistoryRepository.findAll().forEach(System.out::println);
     }
 }
